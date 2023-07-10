@@ -75,3 +75,66 @@ button {
   border: none;
   
 }
+
+.Tournaments-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+}
+
+.Tournaments-cards {
+  padding: 30px 0px 30px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; 
+  gap : 30px;
+  flex-wrap: wrap;
+  
+}
+
+.button-card {
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0px;
+  margin: 0px;
+  border: 0px solid rgba(0, 0, 0, 0);
+}
+
+.inactive-card > :not(.card-buttons) {
+  opacity: 0.4;
+}
+
+.card-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; 
+  gap: 20px;
+  padding: 10px;
+  margin: 0px;
+  opacity: 1;
+}
+
+.active-card:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+.form-inline {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  gap: 10px;
+}
+
+.form-inline .form-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
