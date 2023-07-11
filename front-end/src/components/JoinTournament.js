@@ -49,14 +49,15 @@ function InlineForm(props) {
 
     for(let i=0; i<playerCount; i++){
         forms.push(<div className="form-group">
+                        <label>Player {i}</label>
                         <fieldset>
-                            <input type="text" className="form-control" placeholder="name@example.com"/>
+                            <input type="text" className="form-control" placeholder="Name"/>
                         </fieldset>
                         <fieldset>
-                            <input type="text" className="form-control" placeholder="Optional"/>
+                            <input type="text" className="form-control" placeholder="Surname"/>
                         </fieldset>
                         <fieldset>
-                            <input type="text" className="form-control" placeholder="Optional" />
+                            <input type="email" className="form-control" placeholder="email" />
                         </fieldset>
                     </div>)
     }
