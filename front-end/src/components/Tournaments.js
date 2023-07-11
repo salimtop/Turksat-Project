@@ -1,5 +1,5 @@
 import BaskatballImg from "../assets/baskatball.png";
-import VolleyballImg from "../assets/voleyball.png";
+import VolleyballImg from "../assets/volleyball.png";
 import FootballImg from "../assets/football.png";
 import Navbar from "./Navbar";
 
@@ -35,8 +35,8 @@ function TournamentCard(props) {
                     */}
                 </div>
                 <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Total Teams : {props.teamCount}</li>
-                    <li className="list-group-item">Total Player : {props.playerCount}</li>
+                    <li className="list-group-item">Total Teams : {props.totalTeamCount}</li>
+                    <li className="list-group-item">Total Player : {props.totalPlayerCount}</li>
                     <li className="list-group-item">Register Due Date : {props.registerDate}</li>
                 </ul>
             </button>
@@ -79,30 +79,33 @@ function Tournaments() {
             isActive : true,
             imgSrc : BaskatballImg,
             title : "Basketball Tournament",
-            teamCount : 10,
-            playerCount : 50,
+            playerPerTeam: 5,
+            totalTeamCount : 10,
+            totalPlayerCount : 50,
             registerDate : new Date().toDateString()
         },
         football : {
             isActive : false,
             imgSrc : FootballImg,
             title : "Football Tournament",
-            teamCount : 10,
-            playerCount : 110,
+            playerPerTeam: 11,
+            totalTeamCount : 10,
+            totalPlayerCount : 110,
             registerDate : new Date().toDateString()
         }, 
        volleyball : {
             isActive : true,
             imgSrc : VolleyballImg,
             title : "Volleyball Tournament",
-            teamCount : 10,
-            playerCount : 50,
+            playerPerTeam: 5,
+            totalTeamCount : 10,
+            totalPlayerCount : 50,
             registerDate : new Date().toDateString()
         },
     }
 
     return (
-        <div>
+        <>
             <Navbar />
             <div className="Tournaments-container">
                 <YearSelector/>
@@ -112,7 +115,7 @@ function Tournaments() {
                     <TournamentCard {...cardParams.volleyball}/>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

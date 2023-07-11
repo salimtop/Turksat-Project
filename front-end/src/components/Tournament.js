@@ -8,6 +8,8 @@ function Tournament() {
     }
     const data = location.state.props;
     
+    console.log(data)
+
     const fixtures = [
         { match: 'Match 1', team1: 'Team A', team2: 'Team B', score1: 2, score2: 1 },
         { match: 'Match 2', team1: 'Team C', team2: 'Team D', score1: 3, score2: 0 },

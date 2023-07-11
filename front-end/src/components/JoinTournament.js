@@ -1,5 +1,6 @@
 import Navbar from "./Navbar";
-import { useState } from "react";
+import { useState} from "react";
+import { Navigate, useLocation  } from "react-router-dom";
 
 function DynamicInlineForm() {
     const [forms, setForms] = useState([{ id: 1, isLast: true }]);
@@ -44,12 +45,12 @@ function DynamicInlineForm() {
   }
 
 function InlineForm(props) {
-    const playerCount = 5;
+    const playerCount = props.playerPerTeam;
     const forms = []
 
-    for(let i=0; i<playerCount; i++){
+    for(let i=1; i<=playerCount; i++){
         forms.push(<div className="form-group">
-                        <label>Player {i}</label>
+                        <label>#{i}</label>
                         <fieldset>
                             <input type="text" className="form-control" placeholder="Name"/>
                         </fieldset>
@@ -59,22 +60,42 @@ function InlineForm(props) {
                         <fieldset>
                             <input type="email" className="form-control" placeholder="email" />
                         </fieldset>
-                    </div>)
+                    </div>
+        )
     }
+
     return (
       <form className="form-inline">
         {forms}
+        <button type="submit" className="btn btn-primary" style={{marginTop:"30px"}}>Apply</button>
       </form>
     );
   }
 
 function JoinTournament() {
 
+    const location = useLocation();
+
+    if (location.state == null) {
+       return  <Navigate to="/"/>
+    }
+    const data = location.state.props;
+    const playerCount = data.playerPerTeam;
+    
+    console.log(data)
+
     return (
-        <div>
+        <>
             <Navbar/>
-            <InlineForm playerCount="5" />
-        </div>
+            <div className="container">
+                <div className="Join-container">
+                    <h3>Join {data.title}</h3>
+                    <img src={data.imgSrc} alt="Tournament Sport Illustration"/>
+                    <h5>Team Players</h5>
+                    <InlineForm playerPerTeam={playerCount} />
+                </div>
+            </div>
+        </>
     )
 }
 
