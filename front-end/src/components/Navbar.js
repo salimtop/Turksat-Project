@@ -1,5 +1,4 @@
-import {BrowserRouter, Routes, Route, Link} from "react-router-dom"
-import Tournament from "./Tournament";
+import {Link} from "react-router-dom"
 import navbar_logo from "../assets/turksat-white-logo.png";
 
 function Navbar() {
