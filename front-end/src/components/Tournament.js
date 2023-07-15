@@ -5,7 +5,14 @@ import Navbar from "./Navbar"
 function Standings() {
   const standings = [
     {teamName: "Fenerbahçe", played: 10, won: 8, lost: 1, draw: 0, average: 19, point: 25},
-    {teamName: "Beşiktaş", played: 10, won: 7, lost: 2, draw: 0, average: 19, point: 22}
+    {teamName: "Beşiktaş", played: 10, won: 7, lost: 2, draw: 0, average: 19, point: 22},
+    {teamName: "Beşiktaş", played: 10, won: 7, lost: 2, draw: 0, average: 19, point: 22},
+    {teamName: "Beşiktaş", played: 10, won: 7, lost: 2, draw: 0, average: 19, point: 22},
+    {teamName: "Beşiktaş", played: 10, won: 7, lost: 2, draw: 0, average: 19, point: 22},
+    {teamName: "Beşiktaş", played: 10, won: 7, lost: 2, draw: 0, average: 19, point: 22},
+    {teamName: "Beşiktaş", played: 10, won: 7, lost: 2, draw: 0, average: 19, point: 22},
+    {teamName: "Beşiktaş", played: 10, won: 7, lost: 2, draw: 0, average: 19, point: 22},
+    {teamName: "Beşiktaş", played: 10, won: 7, lost: 2, draw: 0, average: 19, point: 22},
   ];
 
   standings.sort((a,b) => b.point - a.point);
@@ -90,7 +97,7 @@ function Teams(){
 
   return (
     <>
-    <Accordion>
+    <Accordion className="Teams">
       {
         teams.map((team, index) => {
           return (
@@ -144,8 +151,8 @@ function Tournament() {
       <Navbar/>
       <div className="Tournament-container">  
         <Teams/>
-        <Standings/>
         <Fixture/>
+        <Standings/>
       </div>
       </>
     )

@@ -10,7 +10,6 @@ function Navbar() {
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div className="navbar-nav">
-                <Link className="nav-item nav-link" to="/">Home</Link>
                 <Link className="nav-item nav-link" to="/tournaments">Tournaments</Link>
                 <Link className="nav-item nav-link" to="/login">My Profile</Link>
                 </div>

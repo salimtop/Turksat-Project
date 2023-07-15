@@ -168,19 +168,35 @@ button {
 }
 
 .Tournament-container {
-  width: 95vw;
+  width: 98vw;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-items: center;
-  align-items: center;
-  gap: 40px;
+  justify-items: flex-start;
+  align-items: flex-start;
+  gap: 10px;
   padding-top: 30px;
+  background-color: white;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+@media (max-width: 1500px) {
+  .Tournament-container {
+    flex-direction: column;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .Standings{
-  width: 600px;
-  margin: auto;
+  min-width: 500px;
+  max-width: 90vw;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Fixture */
@@ -189,10 +205,12 @@ button {
   display: flex;
   flex-direction: column;
   justify-items: center;
-  align-items: center; 
+  align-items: start; 
   min-width: 500px;
-  margin: auto;
-  background-color: white;
+  width: 100%;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .Fixture {
@@ -201,8 +219,10 @@ button {
   gap: 30px;
   justify-items: center;
   align-items: center;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding: 7px 1px 7px 1px;
+  margin: auto;
+  min-width: 500px;
+  width: 95%;
 }
 
 
@@ -235,4 +255,13 @@ button {
 
 .Fixture-team {
   width: 5em;
+}
+
+.Teams {
+  padding: 20px;
+  justify-self: center;
+  min-width: 400px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }

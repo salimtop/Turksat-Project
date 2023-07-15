@@ -18,7 +18,7 @@ function TournamentCard(props) {
     }
 
     const editClickHandler = () => {
-
+        navigate("/tournament-admin", {state: {props}})
     }
 
     const canEdit = true;
