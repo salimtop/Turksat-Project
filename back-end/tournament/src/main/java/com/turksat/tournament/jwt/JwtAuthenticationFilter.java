@@ -1,6 +1,5 @@
-package com.turksat.tournament.config;
+package com.turksat.tournament.jwt;
 
-import com.turksat.tournament.jwt.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
