@@ -1,6 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import './App.css';
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom"
+import { AuthContext } from "./config/AuthenticationControl";
+import { useContext } from "react";
 import Login from "./components/Login";
 import Tournaments from "./components/Tournaments";
 import Tournament from "./components/Tournament";
@@ -8,7 +10,7 @@ import JoinTournament from "./components/JoinTournament";
 import TournamentAdmin from "./components/TournamentAdmin";
 
 function App() {
-  const isLoggedIn = true;
+  const [isLoggedIn ] = useContext(AuthContext);
 
   return (
     <div className="App">
