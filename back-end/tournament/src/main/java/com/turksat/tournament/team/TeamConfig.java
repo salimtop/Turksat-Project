@@ -1,40 +1,43 @@
 package com.turksat.tournament.team;
 
 import com.turksat.tournament.tournament.Tournament;
-import com.turksat.tournament.tournament.TournamentConfig;
 import com.turksat.tournament.tournament.TournamentRepository;
 import com.turksat.tournament.user.User;
-import com.turksat.tournament.user.UserConfig;
 import com.turksat.tournament.user.UserRepository;
-import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 
-@AutoConfiguration
-@AutoConfigureAfter({UserConfig.class, TournamentConfig.class})
-public class TeamConfig {
+import java.util.List;
 
-    @Bean
-    @PostConstruct
-    CommandLineRunner teamCommandLineRunner(TeamRepository teamRepository,
-                                            UserRepository userRepository,
-                                            TournamentRepository tournamentRepository){
+@Order(value = 3)
+@Component
+@RequiredArgsConstructor
+public class TeamConfig implements CommandLineRunner{
+    @Autowired
+    private final TeamRepository teamRepository;
+    @Autowired
+    private final UserRepository userRepository;
+    @Autowired
+    private final TournamentRepository tournamentRepository;
 
-        return args -> {
-            User keeper = userRepository
-                                        .findById(2L)
-                                        .orElseThrow(()-> new Exception("User NOT found by ID!"));
-            Tournament tournament = tournamentRepository
-                                                        .findById(1L)
-                                                        .orElseThrow(()->new Exception("Tournament NOT found by ID"));
+    @Override
+    public void run(String... args) throws Exception {
+        List<User> keepers = userRepository
+                .findAllById(
+                        List.of(2L,3L));
+        Tournament tournament = tournamentRepository
+                .findById(1L)
+                .orElseThrow(()->new Exception("Tournament NOT found by ID"));
+
+        for (int ind = 0; ind < keepers.size(); ind++) {
+
             teamRepository.save(
-                    new Team(null, "Voley 1", tournament, keeper)
+                    new Team(null, "Voley " + ind + 1, tournament, keepers.listIterator().next())
             );
-        };
+        }
+
     }
 }

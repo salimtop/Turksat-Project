@@ -7,18 +7,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(uniqueConstraints = @UniqueConstraint(name = "uk_team_playerNumber", columnNames = {"team_team_id", "playerNumber"}))
 public class Player {
     @Id
     @GeneratedValue
     private Long playerId;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private User user;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Team team;
+    @JoinColumn(nullable = false)
     private Integer playerNumber;
 }

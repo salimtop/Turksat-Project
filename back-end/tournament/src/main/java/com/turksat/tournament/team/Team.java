@@ -18,10 +18,13 @@ public class Team {
     @Id
     @GeneratedValue
     private Long teamId;
+    @Column(nullable = false, unique = true)
     private String teamName;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Tournament tournament;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private User keeper;
 
 }

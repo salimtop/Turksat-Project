@@ -1,28 +1,28 @@
 package com.turksat.tournament.tournament;
 
-import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@AutoConfiguration
-public class TournamentConfig {
+@Order(value = 1)
+@Component
+@RequiredArgsConstructor
+public class TournamentConfig implements CommandLineRunner{
+    @Autowired
+    private final TournamentRepository tournamentRepository;
 
-    @PostConstruct
-    @Bean
-    CommandLineRunner tournamentCommandLineRunner(TournamentRepository tournamentRepository){
-        return args -> {
-            tournamentRepository.saveAll(
-                    List.of(
-                            new Tournament(null,Sport.VOLLEYBALL,2023),
-                            new Tournament(null,Sport.FOOTBALL,2023)
-                    )
-            );
-        };
+    @Override
+    public void run(String... args) throws Exception {
+        tournamentRepository.saveAll(
+                List.of(
+                        new Tournament(null,Sport.VOLLEYBALL,2023),
+                        new Tournament(null,Sport.FOOTBALL,2023)
+                )
+        );
+
     }
 }
